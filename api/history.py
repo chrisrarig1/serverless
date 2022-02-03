@@ -12,18 +12,18 @@ class handler(BaseHTTPRequestHandler):
         query_string_list = parse.parse_qsl(url_components.query)
         dic = dict(query_string_list)
 
-        if 'month'  in dic:
+        if 'month' in dic and 'day' in dic:
             url =  'https://today.zenquotes.io/api/'
-            r = requests.get(url + dic['month'])
+            r = requests.get(url + dic['month']+'/'+dic['day'])
             data = r.json()
             today = []
             for today_data in data:
-                event = today_data['data'][0]['Events'][0]['text']
-                birth = today_data['data'][0]['Births'][0]['text']
-                death = today_data['data'][0]['Deaths'][0]['text']
+                event = today_data['data'][0]
+                # birth = today_data['data'][0]['Births'][0]['text']
+                # death = today_data['data'][0]['Deaths'][0]['text']
                 today.append(event)
-                today.append(birth)
-                today.append(death)
+                # today.append(birth)
+                # today.append(death)
             message = str(today)
         else:
             message ="Please enter a month and day"
