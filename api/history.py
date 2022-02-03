@@ -1,4 +1,3 @@
-from email import message
 from http.server import BaseHTTPRequestHandler
 from urllib import parse
 import requests
@@ -9,7 +8,7 @@ class handler(BaseHTTPRequestHandler):
 
         url_path = self.path
         url_components = parse.urlsplit(url_path)
-        query_string_list = parse.parse_qsl(url_components)
+        query_string_list = parse.parse_qsl(url_components.query)
         dic = dict(query_string_list)
 
         if 'month' and 'day' in dic:
