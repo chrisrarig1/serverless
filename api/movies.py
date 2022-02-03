@@ -2,11 +2,10 @@ from http.server import BaseHTTPRequestHandler
 
 class handler(BaseHTTPRequestHandler):
 
-    def do_Get(self):
+    def do_GET(self):
         self.send_response(200)
         self.send_header('Content-type', 'text/plain')
         self.end_headers()
 
-        message = 'this works'
+        message = 'Hello World!' 
         self.wfile.write(message.encode())
-        return
