@@ -17,9 +17,9 @@ class handler(BaseHTTPRequestHandler):
             data = r.json()
             today = []
             for today_data in data:
-                event = today_data['data']['Events'][0]['text']
-                birth = today_data['data']['Births'][0]['text']
-                death = today_data['data']['Deaths'][0]['text']
+                event = today_data['data'][0]['Events'][0]['text']
+                birth = today_data['data'][0]['Births'][0]['text']
+                death = today_data['data'][0]['Deaths'][0]['text']
                 today.append(event)
                 today.append(birth)
                 today.append(death)
