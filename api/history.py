@@ -12,19 +12,19 @@ class handler(BaseHTTPRequestHandler):
         query_string_list = parse.parse_qsl(url_components.query)
         dic = dict(query_string_list)
 
-        if 'month' in dic and 'day' in dic:
-            url =  'https://today.zenquotes.io/api/'
-            r = requests.get(url + dic['month']+'/'+dic['day'])
+        if 'by_postal' in dic:
+            url =  'https://api.openbrewerydb.org/breweries?by_postal=44107'
+            r = requests.get(url + dic['by_postal'])
             data = r.json()
-            today = []
-            for today_data in data:
-                event = today_data['data'][0]
+            brewery = []
+            for brew_data in data:
+                event = brew_data[0]
                 # birth = today_data['data'][0]['Births'][0]['text']
                 # death = today_data['data'][0]['Deaths'][0]['text']
-                today.append(event)
+                brewery.append(event)
                 # today.append(birth)
                 # today.append(death)
-            message = str(today)
+            message = str(brewery)
         else:
             message ="Please enter a month and day"
         
