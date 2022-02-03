@@ -1,4 +1,5 @@
 from http.server import BaseHTTPRequestHandler
+from typing import final
 from urllib import parse
 import requests
 
@@ -13,6 +14,7 @@ class handler(BaseHTTPRequestHandler):
 
         if 'month' in dic and 'day' in dic:
             url =  'https://today.zenquotes.io/api/'
+            final = (url + dic['month']+'/'+dic['day'])
             r = requests.get(url + dic['month']+'/'+dic['day'])
             data = r.json()
             today = []
@@ -23,8 +25,7 @@ class handler(BaseHTTPRequestHandler):
                 today.append(event)
                 today.append(birth)
                 today.append(death)
-            # message = str(today)
-            message = "its the api"
+            message = str(final)
         else:
             message ="Please enter a month and day"
         
