@@ -18,7 +18,7 @@ class handler(BaseHTTPRequestHandler):
             data = r.json()
             brewery = []
             for brew_data in data:
-                event = brew_data["name"][0]
+                event = brew_data["name"]
                 # birth = today_data['data'][0]['Births'][0]['text']
                 # death = today_data['data'][0]['Deaths'][0]['text']
                 brewery.append(event)
