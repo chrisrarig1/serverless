@@ -14,7 +14,7 @@ class handler(BaseHTTPRequestHandler):
 
         if 'by_postal' in dic:
             url =  'https://api.openbrewerydb.org/breweries?'
-            r = requests.get(url + dic['by_postal'])
+            r = requests.get(url + dic['by_city'])
             data = r.json()
             brewery = []
             for brew_data in data:
