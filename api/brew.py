@@ -12,7 +12,7 @@ class handler(BaseHTTPRequestHandler):
         query_string_list = parse.parse_qsl(url_components.query)
         dic = dict(query_string_list)
 
-        if 'by_postal' in dic:
+        if 'by_city' in dic:
             url =  'https://api.openbrewerydb.org/breweries?'
             r = requests.get(url + dic['by_city'])
             data = r.json()
