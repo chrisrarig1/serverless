@@ -19,14 +19,10 @@ class handler(BaseHTTPRequestHandler):
             brewery = []
             for brew_data in data:
                 event = brew_data["name"]
-                # birth = today_data['data'][0]['Births'][0]['text']
-                # death = today_data['data'][0]['Deaths'][0]['text']
                 brewery.append(event)
-                # today.append(birth)
-                # today.append(death)
             message = str(brewery)
         else:
-            message ="Please enter a month and day"
+            message ="Please enter a city"
         
         self.send_response(200)
         self.send_header('Content-type', 'text/plain')
